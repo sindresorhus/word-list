@@ -1,0 +1,38 @@
+{
+  "name": "word-list",
+  "version": "0.0.0",
+  "description": "List of English words",
+  "license": "MIT",
+  "repository": "sindresorhus/word-list",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "prepublish": "node fetch-words.js",
+    "pretest": "node fetch-words.js",
+    "test": "mocha"
+  },
+  "files": [
+    "index.js",
+    "words.txt"
+  ],
+  "keywords": [
+    "word",
+    "words",
+    "word-list",
+    "list",
+    "en",
+    "english",
+    "dict",
+    "dictionary"
+  ],
+  "devDependencies": {
+    "mocha": "*",
+    "request": "~2.33.0"
+  }
+}
