@@ -1,4 +1,4 @@
-# word-list [![Build Status](https://travis-ci.org/sindresorhus/word-list.png?branch=master)](http://travis-ci.org/sindresorhus/word-list)
+# word-list [![Build Status](https://travis-ci.org/sindresorhus/word-list.svg?branch=master)](https://travis-ci.org/sindresorhus/word-list)
 
 > List of [English words](https://github.com/atebits/Words/blob/master/Words/en.txt)
 
@@ -9,12 +9,12 @@ Used by [word-stream](https://github.com/sindresorhus/word-stream) and [random-w
 
 ## Install
 
-```
-npm install --save word-list
+```bash
+$ npm install --save word-list
 ```
 
 
-## Example
+## Usage
 
 ```js
 var fs = require('fs');
@@ -29,4 +29,4 @@ var wordArray = fs.readFileSync(wordListPath, 'utf8').split('\n');
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
