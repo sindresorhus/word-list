@@ -32,7 +32,7 @@
     "dictionary"
   ],
   "devDependencies": {
-    "mocha": "*",
-    "got": "^0.3.0"
+    "got": "^1.0.1",
+    "mocha": "*"
   }
 }

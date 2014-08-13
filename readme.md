@@ -9,7 +9,7 @@ Used by [word-stream](https://github.com/sindresorhus/word-stream) and [random-w
 
 ## Install
 
-```bash
+```sh
 $ npm install --save word-list
 ```
 
@@ -29,4 +29,4 @@ var wordArray = fs.readFileSync(wordListPath, 'utf8').split('\n');
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)
