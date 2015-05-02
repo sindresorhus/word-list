@@ -33,6 +33,7 @@
   ],
   "devDependencies": {
     "got": "^1.0.1",
-    "mocha": "*"
+    "mocha": "*",
+    "path-exists": "^1.0.0"
   }
 }
