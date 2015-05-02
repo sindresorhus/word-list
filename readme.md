@@ -9,7 +9,7 @@ Used by [word-stream](https://github.com/sindresorhus/word-stream) and [random-w
 
 ## Install
 
-```sh
+```
 $ npm install --save word-list
 ```
 
