@@ -32,8 +32,8 @@
     "dictionary"
   ],
   "devDependencies": {
-    "got": "^2.9.2",
+    "got": "^5.1.0",
     "mocha": "*",
-    "path-exists": "^1.0.0"
+    "path-exists": "^2.0.0"
   }
 }
