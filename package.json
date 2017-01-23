@@ -10,12 +10,12 @@
     "url": "sindresorhus.com"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "prepublish": "node fetch-words.js",
     "pretest": "node fetch-words.js",
-    "test": "mocha"
+    "test": "xo && ava"
   },
   "files": [
     "index.js",
@@ -32,8 +32,8 @@
     "dictionary"
   ],
   "devDependencies": {
-    "got": "^5.1.0",
-    "mocha": "*",
-    "path-exists": "^2.0.0"
+    "ava": "*",
+    "got": "^6.7.1",
+    "xo": "*"
   }
 }

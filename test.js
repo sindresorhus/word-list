@@ -1,11 +1,8 @@
-'use strict';
-var fs = require('fs');
-var assert = require('assert');
-var pathExists = require('path-exists');
-var wordList = require('./');
+import fs from 'fs';
+import test from 'ava';
+import m from './';
 
-it('should return list of words', function () {
-	assert(wordList.length > 0);
-	assert(pathExists.sync(wordList));
-	assert(fs.statSync(wordList).size > 1000);
+test(t => {
+	t.true(m.length > 0);
+	t.true(fs.statSync(m).size > 1000);
 });

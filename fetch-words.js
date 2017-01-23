@@ -1,12 +1,12 @@
 'use strict';
-var fs = require('fs');
-var got = require('got');
-var url = 'https://raw.github.com/atebits/Words/master/Words/en.txt';
+const fs = require('fs');
+const got = require('got');
 
-got(url, function (err, res) {
-	if (err) {
-		throw new Error(err);
-	}
+const url = 'https://raw.github.com/atebits/Words/master/Words/en.txt';
 
-	fs.writeFileSync('words.txt', res.trim());
+got(url).then(res => {
+	fs.writeFileSync('words.txt', res.body.trim());
+}).catch(err => {
+	console.error(err);
+	process.exit(1); // eslint-disable-line unicorn/no-process-exit
 });
