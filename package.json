@@ -1,39 +1,40 @@
 {
-  "name": "word-list",
-  "version": "2.0.0",
-  "description": "List of English words",
-  "license": "MIT",
-  "repository": "sindresorhus/word-list",
-  "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
-  },
-  "engines": {
-    "node": ">=4"
-  },
-  "scripts": {
-    "prepublish": "node fetch-words.js",
-    "pretest": "node fetch-words.js",
-    "test": "xo && ava"
-  },
-  "files": [
-    "index.js",
-    "words.txt"
-  ],
-  "keywords": [
-    "word",
-    "words",
-    "word-list",
-    "list",
-    "en",
-    "english",
-    "dict",
-    "dictionary"
-  ],
-  "devDependencies": {
-    "ava": "*",
-    "got": "^6.7.1",
-    "xo": "*"
-  }
+	"name": "word-list",
+	"version": "2.0.0",
+	"description": "List of English words",
+	"license": "MIT",
+	"repository": "sindresorhus/word-list",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "sindresorhus.com"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"scripts": {
+		"test": "xo && ava",
+		"build": "node fetch-words.js",
+		"prepublishOnly": "npm run build",
+		"pretest": "npm run build"
+	},
+	"files": [
+		"index.js",
+		"words.txt"
+	],
+	"keywords": [
+		"word",
+		"words",
+		"word-list",
+		"list",
+		"en",
+		"english",
+		"dict",
+		"dictionary"
+	],
+	"devDependencies": {
+		"ava": "^1.2.1",
+		"got": "^9.6.0",
+		"xo": "^0.24.0"
+	}
 }

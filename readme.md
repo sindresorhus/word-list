@@ -10,7 +10,7 @@ Used by [`word-stream`](https://github.com/sindresorhus/word-stream) and [`rando
 ## Install
 
 ```
-$ npm install --save word-list
+$ npm install word-list
 ```
 
 
