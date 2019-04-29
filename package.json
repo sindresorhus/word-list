@@ -13,13 +13,14 @@
 		"node": ">=8"
 	},
 	"scripts": {
-		"test": "xo && ava",
+		"test": "xo && ava && tsd",
 		"build": "node fetch-words.js",
 		"prepublishOnly": "npm run build",
 		"pretest": "npm run build"
 	},
 	"files": [
 		"index.js",
+		"index.d.ts",
 		"words.txt"
 	],
 	"keywords": [
@@ -33,8 +34,9 @@
 		"dictionary"
 	],
 	"devDependencies": {
-		"ava": "^1.2.1",
+		"ava": "^1.4.1",
 		"got": "^9.6.0",
+		"tsd": "^0.7.2",
 		"xo": "^0.24.0"
 	}
 }
