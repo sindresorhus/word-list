@@ -1,6 +1,6 @@
 {
 	"name": "word-list",
-	"version": "2.0.0",
+	"version": "3.0.0",
 	"description": "List of English words",
 	"license": "MIT",
 	"repository": "sindresorhus/word-list",
