@@ -26,7 +26,7 @@ const goodWords = [
 	'illustrator',
 	'shell',
 	'pronoun',
-	'scrap',
+	'scrap'
 ];
 
 test('main', t => {
