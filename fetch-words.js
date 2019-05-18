@@ -2,8 +2,6 @@
 const fs = require('fs');
 const got = require('got');
 
-const url = 'https://raw.githubusercontent.com/atebits/Words/master/Words/en.txt';
-
 const badWords = require('badwords-list').array;
 const leoProfanity = require('leo-profanity');
 
@@ -34,6 +32,8 @@ const badWordsExclusions = new Set([
 	'crap'
 ]);
 const badWordsWithExclusions = badWords.filter(word => !badWordsExclusions.has(word));
+
+const url = 'https://raw.githubusercontent.com/atebits/Words/master/Words/en.txt';
 
 const filters = [
 	{
