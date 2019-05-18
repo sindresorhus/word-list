@@ -2,7 +2,7 @@
 const fs = require('fs');
 const got = require('got');
 
-const badWords = require('badwords-list').array;
+const {array: badWords} = require('badwords-list');
 const leoProfanity = require('leo-profanity');
 
 leoProfanity.loadDictionary('en');
