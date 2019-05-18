@@ -48,7 +48,7 @@ const filters = [
 		name: 'badwords-list with exclusions substring',
 		fn: word => {
 			for (const badWord of badWordsWithExclusions) {
-				if (word.indexOf(badWord) !== -1) {
+				if (word.includes(badWord)) {
 					return false;
 				}
 			}

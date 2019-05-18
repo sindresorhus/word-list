@@ -39,10 +39,10 @@ test('bad words, #2', t => {
 	const words = wordListText.split('\n');
 
 	for (const badWord of badWords) {
-		t.true(words.indexOf(badWord) === -1, badWord);
+		t.false(words.includes(badWord), badWord);
 	}
 
 	for (const goodWord of goodWords) {
-		t.true(words.indexOf(goodWord) !== -1, goodWord);
+		t.true(words.includes(goodWord), goodWord);
 	}
 });
