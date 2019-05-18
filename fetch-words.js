@@ -10,7 +10,29 @@ const leoProfanity = require('leo-profanity');
 leoProfanity.loadDictionary('en');
 
 const badWordsSet = new Set(badWords);
-const badWordsExclusions = new Set(['ass', 'asses', 'anal', 'cum', 'tit', 'bum', 'hore', 'sex', 'cipa', 'butt', 'cock', 'homo', 'eros', 'cox', 'semen', 'damn', 'jap', 'lust', 'hell', 'pron', 'crap']);
+const badWordsExclusions = new Set([
+	'ass',
+	'asses',
+	'anal',
+	'cum',
+	'tit',
+	'bum',
+	'hore',
+	'sex',
+	'cipa',
+	'butt',
+	'cock',
+	'homo',
+	'eros',
+	'cox',
+	'semen',
+	'damn',
+	'jap',
+	'lust',
+	'hell',
+	'pron',
+	'crap'
+]);
 const badWordsWithExclusions = badWords.filter(word => !badWordsExclusions.has(word));
 
 const filters = [
