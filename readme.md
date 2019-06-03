@@ -6,6 +6,8 @@ Useful if you're creating a word game or just want some words to work with.
 
 Used by [`word-stream`](https://github.com/sindresorhus/word-stream) and [`random-word`](https://github.com/sindresorhus/random-word).
 
+One-letter words are not included.
+
 
 ## Install
 
