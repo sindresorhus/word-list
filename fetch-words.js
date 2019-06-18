@@ -2,13 +2,15 @@
 const fs = require('fs');
 const got = require('got');
 
+const verbose = process.argv.includes('-v');
+
 const {array: badWords} = require('badwords-list');
 const leoProfanity = require('leo-profanity');
 
 leoProfanity.loadDictionary('en');
 
 const badWordsSet = new Set(badWords);
-const badWordsExclusions = new Set([
+const badWordsSubstringExclusions = new Set([
 	'ass',
 	'asses',
 	'anal',
@@ -29,31 +31,32 @@ const badWordsExclusions = new Set([
 	'lust',
 	'hell',
 	'pron',
-	'crap'
+	'crap',
+	'spac'
 ]);
-const badWordsWithExclusions = badWords.filter(word => !badWordsExclusions.has(word));
+const badSubstrings = badWords.filter(word => !badWordsSubstringExclusions.has(word));
 
 const url = 'https://raw.githubusercontent.com/atebits/Words/master/Words/en.txt';
 
 const filters = [
 	{
 		name: 'leo-profanity',
-		fn: word => !leoProfanity.check(word)
+		getReason: word => leoProfanity.check(word) ? 'is marked bad by leo-profanity' : undefined
 	},
 	{
 		name: 'badwords-list exact',
-		fn: word => !badWordsSet.has(word)
+		getReason: word => badWordsSet.has(word) ? 'is in badwords-list' : undefined
 	},
 	{
-		name: 'badwords-list with exclusions substring',
-		fn: word => {
-			for (const badWord of badWordsWithExclusions) {
-				if (word.includes(badWord)) {
-					return false;
+		name: 'badwords-list susbtrings',
+		getReason: word => {
+			for (const badSubstring of badSubstrings) {
+				if (word.includes(badSubstring)) {
+					return `includes substring "${badSubstring}"`;
 				}
 			}
 
-			return true;
+			return undefined;
 		}
 	}
 ];
@@ -66,11 +69,19 @@ const filters = [
 
 	for (const filter of filters) {
 		const previousLength = words.length;
-		words = words.filter(filter.fn);
+		words = words.filter(word => {
+			const reason = filter.getReason(word);
+
+			if (reason !== undefined && verbose) {
+				console.log(`word "${word}" excluded because it ${reason}`);
+			}
+
+			return reason === undefined;
+		});
 		console.log(`filtered ${previousLength - words.length} bad words with filter '${filter.name}'`);
 	}
 
-	console.log(`filtered ${originalLength - words.length} bad words total`);
+	console.log(`filtered ${originalLength - words.length} bad words total out of ${originalLength} original words`);
 
 	fs.writeFileSync('words.txt', words.join('\n'));
 })().catch(error => {
