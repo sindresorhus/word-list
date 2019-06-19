@@ -10,31 +10,11 @@ const leoProfanity = require('leo-profanity');
 leoProfanity.loadDictionary('en');
 
 const badWordsSet = new Set(badWords);
-const badWordsSubstringExclusions = new Set([
-	'ass',
-	'asses',
-	'anal',
-	'cum',
-	'tit',
-	'bum',
-	'hore',
-	'sex',
-	'cipa',
-	'butt',
-	'cock',
-	'homo',
-	'eros',
-	'cox',
-	'semen',
-	'damn',
-	'jap',
-	'lust',
-	'hell',
-	'pron',
-	'crap',
-	'spac'
+
+const ourBadWordsSet = new Set([
+	'bumfuck',
+	'bumfucks'
 ]);
-const badSubstrings = badWords.filter(word => !badWordsSubstringExclusions.has(word));
 
 const url = 'https://raw.githubusercontent.com/atebits/Words/master/Words/en.txt';
 
@@ -48,16 +28,8 @@ const filters = [
 		getReason: word => badWordsSet.has(word) ? 'is in badwords-list' : undefined
 	},
 	{
-		name: 'badwords-list susbtrings',
-		getReason: word => {
-			for (const badSubstring of badSubstrings) {
-				if (word.includes(badSubstring)) {
-					return `includes substring "${badSubstring}"`;
-				}
-			}
-
-			return undefined;
-		}
+		name: 'our bad words list',
+		getReason: word => ourBadWordsSet.has(word) ? 'is in our bad words list' : undefined
 	}
 ];
 
