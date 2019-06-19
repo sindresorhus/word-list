@@ -2,7 +2,7 @@
 const fs = require('fs');
 const got = require('got');
 
-const verbose = process.argv.includes('-v');
+const isVerbose = process.argv.includes('--verbose');
 
 const {array: badWords} = require('badwords-list');
 const leoProfanity = require('leo-profanity');
@@ -42,15 +42,17 @@ const filters = [
 
 	for (const filter of filters) {
 		const previousLength = words.length;
+
 		words = words.filter(word => {
 			const reason = filter.getReason(word);
 
-			if (reason !== undefined && verbose) {
-				console.log(`word "${word}" excluded because it ${reason}`);
+			if (reason !== undefined && isVerbose) {
+				console.log(`word \`${word}\` excluded because it ${reason}`);
 			}
 
 			return reason === undefined;
 		});
+
 		console.log(`filtered ${previousLength - words.length} bad words with filter '${filter.name}'`);
 	}
 

@@ -34,11 +34,11 @@
 		"dictionary"
 	],
 	"devDependencies": {
-		"ava": "^1.4.1",
+		"ava": "^2.1.0",
 		"badwords-list": "^1.0.0",
 		"got": "^9.6.0",
 		"leo-profanity": "^1.2.5",
-		"tsd": "^0.7.2",
+		"tsd": "^0.7.3",
 		"xo": "^0.24.0"
 	}
 }
