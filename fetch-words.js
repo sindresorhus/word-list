@@ -13,7 +13,8 @@ const badWordsSet = new Set(badWords);
 
 const ourBadWordsSet = new Set([
 	'bumfuck',
-	'bumfucks'
+	'bumfucks',
+	'tittie'
 ]);
 
 const url = 'https://raw.githubusercontent.com/atebits/Words/master/Words/en.txt';
