@@ -1,4 +1,4 @@
-# word-list [![Build Status](https://travis-ci.org/sindresorhus/word-list.svg?branch=master)](https://travis-ci.org/sindresorhus/word-list)
+# word-list
 
 > List of [English words](https://github.com/atebits/Words/blob/master/Words/en.txt)
 
