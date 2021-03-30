@@ -15,7 +15,7 @@
 	"scripts": {
 		"test": "xo && ava && tsd",
 		"build": "node fetch-words.js",
-		"prepublishOnly": "npm run build",
+		"prepare": "npm run build",
 		"pretest": "npm run build"
 	},
 	"files": [
