@@ -1,11 +1,12 @@
-'use strict';
-const fs = require('fs');
-const got = require('got');
+import process from 'node:process';
+import fs from 'node:fs';
+import got from 'got';
+import badWords_ from 'badwords-list';
+import leoProfanity from 'leo-profanity';
+
+const {array: badWords} = badWords_;
 
 const isVerbose = process.argv.includes('--verbose');
-
-const {array: badWords} = require('badwords-list');
-const leoProfanity = require('leo-profanity');
 
 leoProfanity.loadDictionary('en');
 
@@ -244,7 +245,7 @@ const ourBadWordsSet = new Set([
 	'zoophiles',
 	'zoophilias',
 	'zoophilic',
-	'zoophilies'
+	'zoophilies',
 ]);
 
 const url = 'https://raw.githubusercontent.com/atebits/Words/master/Words/en.txt';
@@ -252,44 +253,39 @@ const url = 'https://raw.githubusercontent.com/atebits/Words/master/Words/en.txt
 const filters = [
 	{
 		name: 'leo-profanity',
-		getReason: word => leoProfanity.check(word) ? 'is marked bad by leo-profanity' : undefined
+		getReason: word => leoProfanity.check(word) ? 'is marked bad by leo-profanity' : undefined,
 	},
 	{
 		name: 'badwords-list exact',
-		getReason: word => badWordsSet.has(word) ? 'is in badwords-list' : undefined
+		getReason: word => badWordsSet.has(word) ? 'is in badwords-list' : undefined,
 	},
 	{
 		name: 'our bad words list',
-		getReason: word => ourBadWordsSet.has(word) ? 'is in our bad words list' : undefined
-	}
+		getReason: word => ourBadWordsSet.has(word) ? 'is in our bad words list' : undefined,
+	},
 ];
 
-(async () => {
-	const {body} = await got(url);
-	let words = body.trim().split('\n');
+const {body} = await got(url);
+let words = body.trim().split('\n');
 
-	const originalLength = words.length;
+const originalLength = words.length;
 
-	for (const filter of filters) {
-		const previousLength = words.length;
+for (const filter of filters) {
+	const previousLength = words.length;
 
-		words = words.filter(word => {
-			const reason = filter.getReason(word);
+	words = words.filter(word => {
+		const reason = filter.getReason(word);
 
-			if (reason !== undefined && isVerbose) {
-				console.log(`word \`${word}\` excluded because it ${reason}`);
-			}
+		if (reason !== undefined && isVerbose) {
+			console.log(`word \`${word}\` excluded because it ${reason}`);
+		}
 
-			return reason === undefined;
-		});
+		return reason === undefined;
+	});
 
-		console.log(`filtered ${previousLength - words.length} bad words with filter '${filter.name}'`);
-	}
+	console.log(`filtered ${previousLength - words.length} bad words with filter '${filter.name}'`);
+}
 
-	console.log(`filtered ${originalLength - words.length} bad words total out of ${originalLength} original words`);
+console.log(`filtered ${originalLength - words.length} bad words total out of ${originalLength} original words`);
 
-	fs.writeFileSync('words.txt', words.join('\n'));
-})().catch(error => {
-	console.error(error);
-	process.exit(1); // eslint-disable-line unicorn/no-process-exit
-});
+fs.writeFileSync('words.txt', words.join('\n'));

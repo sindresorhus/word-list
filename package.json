@@ -4,16 +4,23 @@
 	"description": "List of English words",
 	"license": "MIT",
 	"repository": "sindresorhus/word-list",
+	"funding": "https://github.com/sponsors/sindresorhus",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"url": "https://sindresorhus.com"
 	},
+	"type": "module",
+	"exports": {
+		"types": "./index.d.ts",
+		"default": "./index.js"
+	},
+	"sideEffects": false,
 	"engines": {
-		"node": ">=8"
+		"node": ">=18"
 	},
 	"scripts": {
-		"test": "xo && ava && tsd",
+		"test": "xo && ava",
 		"build": "node fetch-words.js",
 		"prepare": "npm run build",
 		"pretest": "npm run build"
@@ -34,11 +41,10 @@
 		"dictionary"
 	],
 	"devDependencies": {
-		"ava": "^2.1.0",
+		"ava": "^6.1.2",
 		"badwords-list": "^1.0.0",
-		"got": "^9.6.0",
-		"leo-profanity": "^1.2.5",
-		"tsd": "^0.7.3",
-		"xo": "^0.24.0"
+		"got": "^13.0.0",
+		"leo-profanity": "^1.7.0",
+		"xo": "^0.58.0"
 	}
 }

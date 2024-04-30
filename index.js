@@ -1,4 +1,8 @@
-'use strict';
-const path = require('path');
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
 
-module.exports = path.join(__dirname, 'words.txt');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const wordListPath = path.join(__dirname, 'words.txt');
+
+export default wordListPath;

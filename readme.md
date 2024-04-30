@@ -8,21 +8,19 @@ Used by [`word-stream`](https://github.com/sindresorhus/word-stream) and [`rando
 
 One-letter words are not included. Many common bad words are also filtered out.
 
-
 ## Install
 
+```sh
+npm install word-list
 ```
-$ npm install word-list
-```
-
 
 ## Usage
 
 ```js
-const fs = require('fs');
+import fs from 'node:fs';
 
-// Returns the path to the word list which is separated by `\n`
-const wordListPath = require('word-list');
+// Returns the path to the word list which is separated by `\n`.
+import wordListPath from 'word-list';
 
 const wordArray = fs.readFileSync(wordListPath, 'utf8').split('\n');
 //=> […, 'abmhos', 'abnegate', …]
