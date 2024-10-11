@@ -519,7 +519,7 @@ const ourBadWordsSet = new Set([
 	'zoophiles',
 	'zoophilias',
 	'zoophilic',
-	'zoophilies'
+	'zoophilies',
 ]);
 
 const url = 'https://raw.githubusercontent.com/atebits/Words/master/Words/en.txt';
